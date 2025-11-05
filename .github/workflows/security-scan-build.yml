@@ -1,21 +1,21 @@
-name: My Ox Security Scan 
+name: My Ox Security Scan
 
 on:
-  workflow_dispatch:  # Allow manually trigger using the GitHub UI
+  workflow_dispatch:  # Allow manual trigger using the GitHub UI
   push:
     branches: [main]
-
   pull_request:
     branches: [main]
 
 jobs:
   security:
-     runs-on: ubuntu:latest
-     steps:
- 	- name: Checkout repository
- 	  uses: actions/checkout@v3
+    runs-on: ubuntu-latest
 
-	- name: Run my OX Security Scan
-   	  uses: oxsecurity/ox-security-scan@main
-     with:
-     	ox_api_key: ${{ secrets.OX_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run My Ox Security Scan
+        uses: oxsecurity/ox-security-scan@main
+        with:
+          ox_api_key: ${{ secrets.OX_API_KEY }}
